@@ -1,0 +1,20 @@
+networks:
+  linknet:
+services:
+  link:
+    build: .
+    depends_on:
+      - vk
+    ports:
+      - "8069:80"
+    env_file:
+      - .prod.env
+    links:
+      - vk
+  vk:
+    image: valkey/valkey:latest
+    volumes:
+      - linkdata:/data
+
+volumes:
+  linkdata: {}

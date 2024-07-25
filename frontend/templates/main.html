@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="self-made url shortener">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="pnlt.link">
+    <meta property="og:url" content="https://link.pnlt.ru">
+    <meta property="og:description" content="self-made url shortener">
+    <meta property="og:image" content="{{ url_for('static', path='img/logo.png') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', path='main.css') }}">
+    <title>pnlt.link {% block subtitle %}{% endblock %} </title>
+
+    {% block additional_info_in_head %}{% endblock %}
+</head>
+<body>
+    {% block body %}{% endblock %}
+</body>
+</html>

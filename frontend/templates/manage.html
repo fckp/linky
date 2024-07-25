@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% block subtitle %}> manage{% endblock %}
+{% block additional_info_in_head %}
+<link rel="stylesheet" href="{{ url_for('static', path='manage.css') }}">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{ url_for('static', path='manage.js') }}" defer></script>
+{% endblock %}
+{% block body %}
+<h2>Create new link</h2>
+<form id="create-new-url" method="post">
+    <input type="text" name="id" autocomplete="off" id="url-id" maxlength="16" placeholder="ID (leave blank for random)" aria-placeholder="ID (leave blank for random)">
+    <input type="url" name="redir_to" autocomplete="off" id="url-redir" placeholder="Redirect to" aria-placeholder="Redirect to" required aria-required="true">
+    <input type="submit" value="Create">
+</form>
+<h2>Links</h2>
+<div class="links">
+    {% for link in links %}
+    <div class="link">
+        <span class="link-id">{{link.id}}</span>
+        <span class="link-url">{{link.url}}</span>
+        <span class="link-actions">
+            <a class="button" href="/{{link.id}}">Link</a>
+            <a class="button delete" href="/api/url/{{link.id}}">Delete</a>
+        </span>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
